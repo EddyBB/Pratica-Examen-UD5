@@ -3,6 +3,8 @@
  */
 package ud05arrays;
 
+import helpers.Helper;
+
 /**
  * @author eserrano
  *
@@ -50,7 +52,19 @@ public class Ud5Ejercicio1 {
 	 * @return Nuevo array con las Bolas creadas.
 	 */
 	public static Bola[] crearBolas(float[][] datosBolas) {
-		return null;
+		
+		// Creo el array con la longitud de los datosBolas
+		Bola[] bola = new Bola[datosBolas.length];
+		
+		int i = 0; // Creo un contador para que sume por cada vez que pase por el for
+		
+		for (float[] fs : datosBolas) {
+			bola[i] = new Bola(fs[0],fs[1]); // En bola posicion i meto fs[0] filas y fs[1] columnas
+			i++;
+		}
+		
+		
+		return bola;
 	}
 	
 
@@ -65,7 +79,9 @@ public class Ud5Ejercicio1 {
 	public static void imprimeBolas(Bola[] array, String titulo) {
 		System.out.println(titulo + ": --------------------");
 		
-		//TODO sobrescribe el comentario para hacer lo que el metodo pide
+		for (Bola bola : array) {
+			System.out.println(bola);
+		}
 		
 		System.out.println("-----------------------------");
 	}
@@ -84,7 +100,17 @@ public class Ud5Ejercicio1 {
 	 */
 	public static Bola[] ordena(final Bola[] array) {
 		
-		return null;
+		Bola[] bola = array.clone();
+		
+		for (int i = 0; i < bola.length; i++) {
+			for (int j = i + 1; j < bola.length; j++) {
+				if (bola[j].compareTo(bola[i]) > 0) {
+					Helper.swap(bola, i, j);
+				}
+			}
+		}
+		
+		return bola;
 	}
 	
 	/**
