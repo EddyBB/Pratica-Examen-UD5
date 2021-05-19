@@ -129,7 +129,30 @@ public class Ud5Ejercicio1 {
 	 * @return nuevo array con los elementos no eliminados.
 	 */
 	public static Bola[] eliminaBolas(float diametro, float peso,final Bola[] array) {
-		return null;
+		
+		Bola[] copia = array.clone(); // clon del array para no sobreescribir el array
+		
+		Bola bolas = new Bola(diametro, peso);
+		
+		int eliminado = 0;
+		
+		for (int i = 0; i < copia.length; i++) {
+			if(bolas.equals(copia[i])) {
+				copia[i] = null; // La bola que es igual la pone a null(elimina)
+				eliminado++;
+			}
+		}
+		
+		Bola[] nuevo = new Bola[copia.length - eliminado]; // Nuevo array con la nueva longitud(longitud de copia - los elementos eliminados)
+		
+		int a = 0;
+		for (int i = 0; i < copia.length; i++) {
+			if (copia[i] != null) {				// si la posicion de copia es distinta a null
+				nuevo[a++] = copia[i];			// me te en la posicion de nuevo array lo que hay en copia
+			}
+		}
+		
+		return nuevo;
 	}
 	
 	
